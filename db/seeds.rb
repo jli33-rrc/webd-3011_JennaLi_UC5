@@ -20,3 +20,33 @@ require "csv"
 #         stock_quantity: Faker::Number.between(from: 1, to: 100)
 #     )
 # end
+
+# Part 2, Step 7
+# Clear existing products and categories data to prevent duplicates
+Product.delete_all
+Category.delete_all
+
+# Load CSV data
+csv_file = Rails.root.join('db/products.csv')
+csv_data = File.read(csv_file)
+products = CSV.parse(csv_data, headers: true)
+
+products.each do |row|
+    # Get category name from CSV
+    category_name = row['category']
+
+    # Find or create category
+    category = Category.find_or_create_by(name: category_name)
+
+    # Create product associated with category
+    Product.create!(
+        title: row['name'],
+        description: row['description'],
+        price: row['price'],
+        stock_quantity: row['stock quantity'],
+        category: category
+    )
+end
+
+puts "Seeded #{Category.count} categories and #{Product.count} products."
+
