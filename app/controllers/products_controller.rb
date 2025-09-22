@@ -1,7 +1,10 @@
 class ProductsController < ApplicationController
   def index
     # Part 1, Step 13
-    @products = Product.all
+    # @products = Product.all
+
+    # Part 2, Step 9
+    @products = Product.includes(:category).all
   end
 
   def show
