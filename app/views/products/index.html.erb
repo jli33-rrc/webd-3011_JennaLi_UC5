@@ -1,13 +1,14 @@
 <h1>All Products</h1>
 
 <ul>
-  <% @products.each do |product| %>
-    <li>
-      <strong><%= link_to product.title, product_path(product) %></strong><br>
-      Description: <%= product.description %><br>
-      Price: $<%= product.price %><br>
-      Stock: <%= product.stock_quantity %>
-    </li>
-    <hr>
-  <% end %>
+    <% @products.each do |product| %>
+        <li>
+            <strong><%= link_to product.title, product_path(product) %></strong><br>
+            Category: <%= product.category.name %><br>
+            Description: <%= product.description %><br>
+            Price: $<%= product.price %><br>
+            Stock: <%= product.stock_quantity %>
+        </li>
+        <hr>
+    <% end %>
 </ul>
