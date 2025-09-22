@@ -9,13 +9,14 @@
 #   end
 
 require "faker"
+require "csv"
 
-# Part 1, Step 9: Create 676 products
-676.times do
-    Product.create!(
-        title: Faker::Commerce.product_name,
-        description: Faker::Lorem.sentence(word_count: 10),
-        price: Faker::Commerce.price(range: 10.0..500.0),
-        stock_quantity: Faker::Number.between(from: 1, to: 100)
-    )
-end
+# # Part 1, Step 9: Create 676 products
+# 676.times do
+#     Product.create!(
+#         title: Faker::Commerce.product_name,
+#         description: Faker::Lorem.sentence(word_count: 10),
+#         price: Faker::Commerce.price(range: 10.0..500.0),
+#         stock_quantity: Faker::Number.between(from: 1, to: 100)
+#     )
+# end
